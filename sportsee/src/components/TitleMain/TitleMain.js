@@ -1,31 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import './titleMain.scss';
 
-const TitleMain = () => {
+const TitleMain = ({userId}) => {
     const [name, setName] = useState('');
-    let { id } = useParams();
-    console.log(id);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${id}`)
+        fetch(`http://localhost:3000/user/${userId}`)
         .then(response => response.json())
         .then(data => {
-            /*const user = data.find(user => user.id === parseInt(id));
-            if (user) {
-                setName(user.userInfos.firstName);
-            }
-           console.log(data.data)*/
-           // setName(data.data.userInfos.firstName)
            setName(data.data.userInfos.firstName)
+           //console.log(name);
         })
         .catch(error => console.error('Error fetching user data:', error));
-}, [id]);
+    }, [userId]);
 
 
 
     return (
         <div className="titleSection">
-            <h1>Bonjour {name}</h1>
+            <h1>Bonjour <span className='prenomValeur'>{name}</span></h1>
+            <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
     );
 };

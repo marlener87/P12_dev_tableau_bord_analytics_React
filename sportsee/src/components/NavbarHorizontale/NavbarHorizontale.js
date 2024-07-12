@@ -1,4 +1,5 @@
 import React from 'react';
+import './navbarHorizontale.scss';
 import { Link, NavLink } from 'react-router-dom';
 import logo from "../../assets/img/logo.png";
 

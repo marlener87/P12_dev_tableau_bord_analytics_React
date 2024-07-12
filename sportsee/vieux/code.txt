@@ -10,3 +10,9 @@ dans le fichier manifest.json, j'ai enlevé ce bout de code dans 'icons:'
       "type": "image/png",
       "sizes": "512x512"
     }
+
+
+
+
+
+"dev": "node_modules/.bin/nodemon app/index.js",
