@@ -1,0 +1,18 @@
+main {
+
+    .mainBody {
+        display: flex;
+
+        .sectionRight {
+            padding: 20px;
+
+            .titleSection {
+                h1 {
+                    font-size: 48px;
+                    font-family: $font3;
+                }
+            }
+        }
+    }
+   
+}

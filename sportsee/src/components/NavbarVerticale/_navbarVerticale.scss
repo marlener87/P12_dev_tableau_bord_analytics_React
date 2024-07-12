@@ -1,0 +1,12 @@
+.navVerticale {
+    background: $black;
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px;
+    width: 114px;
+
+    .iconNavbar {
+        height: 64px;
+        width: 64px;
+    }
+}

@@ -2,5 +2,8 @@
   "name": "p12_tableau_bord_analytics",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-router-dom": "^6.24.1"
+  }
 }
