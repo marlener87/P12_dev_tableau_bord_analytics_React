@@ -12,6 +12,7 @@ import './apport.scss';
 const Apport = ({userId}) => {
 
     const [data, setData] = useState([]);
+    //console.log(data);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 

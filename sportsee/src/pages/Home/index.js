@@ -4,8 +4,12 @@ import NavbarVerticale from '../../components/navbarVerticale/NavbarVerticale';
 import TitleMain from '../../components/titleMain/TitleMain';
 import Apport from '../../components/Apport/Apport';
 
-import './style.scss'
- 
+import App from '../../components/graphs/bar/bar'
+import './style.scss';
+//import GraphicLine from '../../components/graphs/line/line';
+import LineGraph from '../../components/graphs/line/line';
+import RadarGraph from '../../components/graphs/radar/radar'
+
 const Home = () => { 
 
     const userId = 12; 
@@ -19,7 +23,20 @@ const Home = () => {
                 <NavbarVerticale />
                 <section className='sectionRight'>
                     <TitleMain userId={userId}/>
-                    <Apport userId={userId} />
+                    <div className="statsBlock">
+                        <div className="stats">
+                            <App />
+
+                            <div className='blockGraphs'>
+                                <LineGraph />
+                                <RadarGraph />
+                            </div>
+                        </div>
+                        
+                        <Apport userId={userId} />
+                    </div>
+                    
+                    
                 </section>
 
             </div>
@@ -28,3 +45,5 @@ const Home = () => {
 };
 
 export default Home;
+
+//<GraphicLine />

@@ -1,0 +1,82 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FBFBFB;
+    width: 835px;
+    height: 320px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+
+    .titleApp {
+        display: flex;
+        justify-content: space-between;
+        margin: 24px 32px;
+        width: 770px;
+        
+        h2 {
+            font-size: 15px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+    }
+
+    .recharts-wrapper {
+        display: flex;
+        justify-content: center;
+
+        .recharts-surface {
+            .recharts-cartesian-grid {
+                .recharts-cartesian-grid-vertical line {
+                    stroke: #FBFBFB;
+                }
+            }
+
+            .recharts-yAxis {
+                .recharts-cartesian-axis-line {
+                    stroke: #FBFBFB;
+                }
+                .recharts-cartesian-axis-ticks {
+                    .recharts-cartesian-axis-tick {
+                        .recharts-cartesian-axis-tick-line {
+                            stroke: #FBFBFB;
+                        }
+                    }          
+                }
+            }
+
+            .recharts-xAxis {
+                .recharts-cartesian-axis-ticks {
+                    .recharts-cartesian-axis-tick {
+                        .recharts-cartesian-axis-tick-line {
+                            stroke: #FBFBFB;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recharts-layer {
+            .recharts-bar-rectangles {
+                .recharts-bar-rectangle {
+                    .recharts-rectangle {
+                        width: 7px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    
+
+    .recharts-legend-wrapper {
+        .recharts-default-legend {
+            display: none;
+        }
+    }
+}

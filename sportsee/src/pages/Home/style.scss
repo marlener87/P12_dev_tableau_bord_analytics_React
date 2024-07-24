@@ -6,7 +6,20 @@ main {
         display: flex;
 
         .sectionRight {
-            padding: 50px 70px;
+            padding: 50px 100px;
+
+            .statsBlock {
+                display: flex;
+                
+                .stats {
+                    width: 835px;
+                    margin-right: 30px;
+
+                    .blockGraphs {
+                        display: flex;
+                    }
+                }
+            }
         }
     }
    

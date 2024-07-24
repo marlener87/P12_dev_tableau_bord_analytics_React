@@ -1,0 +1,12 @@
+.titleSection h1 {
+  font-size: 48px;
+  font-family: "roboto-regular", sans-serif;
+}
+.titleSection h1 .prenomValeur {
+  color: red;
+  font-family: "roboto-regular", sans-serif;
+}
+.titleSection p {
+  font-size: 18px;
+  margin: 40px 0 80px;
+}/*# sourceMappingURL=titleMain.css.map */
