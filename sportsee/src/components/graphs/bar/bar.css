@@ -60,6 +60,18 @@
 .app .recharts-wrapper .recharts-layer .recharts-bar-rectangles .recharts-bar-rectangle .recharts-rectangle {
   width: 7px;
 }
+.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip {
+  background-color: #e60000 !important;
+}
+.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-label {
+  display: none;
+}
+.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-item-list {
+  background-color: #e60000;
+}
+.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-item-list li {
+  color: white !important;
+}
 .app .recharts-legend-wrapper .recharts-default-legend {
   display: none;
 }/*# sourceMappingURL=bar.css.map */

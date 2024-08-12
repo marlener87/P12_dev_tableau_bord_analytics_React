@@ -1,3 +1,18 @@
+@import '../../../styles/variables.scss';
+
+.customTooltip {
+    background-color: $red;
+    padding: 10px 5px;
+    color: $white;
+    font-size: 8px;
+    text-align: center;
+
+    .textTooltip {
+        margin-bottom: 20px;
+    }
+}  
+
+
 .app {
     display: flex;
     flex-direction: column;
@@ -68,11 +83,8 @@
                     }
                 }
             }
-
         }
     }
-
-    
 
     .recharts-legend-wrapper {
         .recharts-default-legend {

@@ -1,93 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import './radar.scss';
+//import UserService from '../../../services/userService';
 
-// const data = [
-//   {
-//     subject: 'Math',
-//     A: 120,
-//     B: 110,
-//     fullMark: 150,
-//   },
-//   {
-//     subject: 'Chinese',
-//     A: 98,
-//     B: 130,
-//     fullMark: 150,
-//   },
-//   {
-//     subject: 'English',
-//     A: 86,
-//     B: 130,
-//     fullMark: 150,
-//   },
-//   {
-//     subject: 'Geography',
-//     A: 99,
-//     B: 100,
-//     fullMark: 150,
-//   },
-//   {
-//     subject: 'Physics',
-//     A: 85,
-//     B: 90,
-//     fullMark: 150,
-//   },
-//   {
-//     subject: 'History',
-//     A: 65,
-//     B: 85,
-//     fullMark: 150,
-//   },
-// ];
-
-const RadarGraph = () => {
+const RadarGraph = ({ userId }) => {
     const [data, setData] = useState([]);
+    // const [userPerformanceFactory, setUserPerformanceFactory] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [isError, setIsError] = useState(false);
 
     useEffect(() => {
       fetch(`http://localhost:3000/user/12/performance`)
       .then(response => response.json())
       .then(responseData => {
-        setData(responseData.data.data);
+         // Transforme les datas pour inclure les noms des kind
+         const transformedData = responseData.data.data.map(item => ({
+            ...item,
+            kindName: responseData.data.kind[item.kind]
+        })).reverse();
+        //setData(responseData.data.data);
+        setData(transformedData);
       })
       .catch(error => {
         console.log(error);
       });
     }, [])
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const objectFromFactory = await UserService.getPerformance(userId)
+    //         console.log(objectFromFactory)
+            
+    //         setUserPerformanceFactory(objectFromFactory);
+    //         setIsLoading(false)
+    //     }
+      
+    //     fetchData()
+
+    // }, [userId])
+
+    // if(isLoading) {
+    //     return <p>Chargement en cours...</p>
+    // }
+
+    // if(isError){
+    //     return <p>Une erreur est survenue...</p>
+    // }
+
+
     return (
         <div className="graphiqueRadar">
             <ResponsiveContainer width="100%" height="100%" >
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
                     <PolarGrid />
-                    <PolarAngleAxis dataKey="kind" />
+                    <PolarAngleAxis dataKey="kindName" />
                     <PolarRadiusAxis />
-                    <Radar name="Mike" dataKey="value" fill="#E60000" fillOpacity={0.6} />
+                    <Radar dataKey="value" fill="#E60000" fillOpacity={0.6} />
                 </RadarChart>
             </ResponsiveContainer>
         </div>
-      
     );
 }
 
 export default RadarGraph;
-
-// export default class RadarGraph extends PureComponent {
-//   static demoUrl = 'https://codesandbox.io/p/sandbox/simple-radar-chart-2p5sxm';
-
-//   render() {
-//     return (
-//         <div className="graphiqueRadar">
-//             <ResponsiveContainer width="100%" height="100%" >
-//                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-//                     <PolarGrid />
-//                     <PolarAngleAxis dataKey="subject" />
-//                     <PolarRadiusAxis />
-//                     <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-//                 </RadarChart>
-//             </ResponsiveContainer>
-//         </div>
-      
-//     );
-//   }
-// }

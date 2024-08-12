@@ -1,0 +1,15 @@
+.graphiqueRadial {
+  width: 258px;
+  height: 263px;
+  background: #FBFBFB;
+  border-radius: 5px;
+  position: relative;
+}
+.graphiqueRadial .titleRadial {
+  position: absolute;
+  margin-top: 24px;
+  margin-left: 30px;
+}
+.graphiqueRadial .titleRadial h2 {
+  font-size: 15px;
+}/*# sourceMappingURL=radial.css.map */

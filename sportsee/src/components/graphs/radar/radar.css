@@ -11,4 +11,8 @@
 }
 .graphiqueRadar .recharts-responsive-container .recharts-wrapper .recharts-surface .recharts-polar-grid .recharts-polar-grid-angle line {
   stroke: #282D30;
+}
+.graphiqueRadar .recharts-responsive-container .recharts-wrapper .recharts-surface .angleAxis .recharts-polar-angle-axis-ticks .recharts-polar-angle-axis-tick .recharts-polar-angle-axis-tick-value {
+  font-size: 12px;
+  color: white;
 }/*# sourceMappingURL=radar.css.map */
