@@ -112,74 +112,14 @@ const Radial = ({ userId }) => {
                   />
               </RadialBarChart>
               <div className="pourcentage">
-                  <span className="nombreScore">{percentage * 100}%</span>
-                  <span> de votre objectif</span>
+                  <div className="textContainer">
+                      <span className="nombreScore">{percentage * 100}%</span>
+                      <span> de votre objectif</span>
+                  </div>
               </div>
           </ResponsiveContainer>
-        </div>
+      </div>
     );
 }
-/*<Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} /> */
-
 
 export default Radial;
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
-// import './radial.scss';
-
-// const Radial = () => {
-//     const [data, setData] = useState([]);
-
-//     useEffect(() => {
-//         fetch(`http://localhost:3000/user/12`)
-//         .then(response => response.json())
-//         .then(responseData => {
-//           console.log(responseData.data);
-//           const userScore = 0.12; // Définir le score de l'utilisateur à 12%
-//           const formattedData = [
-//               { name: 'Score', value: userScore * 100, fill: '#FF0000' }
-//           ];
-//           setData(formattedData);
-//           console.log(formattedData);
-//         })
-//         .catch(error => {
-//           console.log(error);
-//         });
-//     }, [])
-
-//     return (
-//       <div className="graphiqueRadial">
-//           <div className="titleRadial">
-//             <h2>Score</h2>
-//           </div>
-//           <ResponsiveContainer width="100%" height="100%">
-//               <RadialBarChart 
-//                 cx="50%" 
-//                 cy="50%" 
-//                 innerRadius="70%" 
-//                 outerRadius="80%" 
-//                 barSize={10} 
-//                 data={data}
-//                 startAngle={90}
-//                 endAngle={90 + 360 * 0.12}
-//               >
-//                   <RadialBar
-//                       minAngle={15}
-//                       label={{ position: 'insideStart', fill: '#fff' }}
-//                       background
-//                       clockWise
-//                       dataKey="value"
-//                       cornerRadius={10}
-//                   />
-//               </RadialBarChart>
-//           </ResponsiveContainer>
-//       </div>
-//     );
-// }
-
-// export default Radial;

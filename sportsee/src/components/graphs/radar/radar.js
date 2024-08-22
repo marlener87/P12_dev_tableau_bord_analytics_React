@@ -1,57 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import './radar.scss';
-//import UserService from '../../../services/userService';
+import UserService from '../../../services/userService';
 
 const RadarGraph = ({ userId }) => {
-    const [data, setData] = useState([]);
-    // const [userPerformanceFactory, setUserPerformanceFactory] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [isError, setIsError] = useState(false);
-
-    useEffect(() => {
-      fetch(`http://localhost:3000/user/12/performance`)
-      .then(response => response.json())
-      .then(responseData => {
-         // Transforme les datas pour inclure les noms des kind
-         const transformedData = responseData.data.data.map(item => ({
-            ...item,
-            kindName: responseData.data.kind[item.kind]
-        })).reverse();
-        //setData(responseData.data.data);
-        setData(transformedData);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    }, [])
+    const [userPerformanceFactory, setUserPerformanceFactory] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const objectFromFactory = await UserService.getPerformance(userId)
-    //         console.log(objectFromFactory)
+    //   fetch(`http://localhost:3000/user/12/performance`)
+    //   .then(response => response.json())
+    //   .then(responseData => {
+    //      // Transforme les datas pour inclure les noms des kind
+    //      const transformedData = responseData.data.data.map(item => ({
+    //         ...item,
+    //         kindName: responseData.data.kind[item.kind]
+    //     })).reverse();
+    //     //setData(responseData.data.data);
+    //     setData(transformedData);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    // }, [])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const objectFromFactory = await UserService.getPerformance(userId)
+            //console.log(objectFromFactory)
+            //console.log(objectFromFactory.kind);
             
-    //         setUserPerformanceFactory(objectFromFactory);
-    //         setIsLoading(false)
-    //     }
+            setUserPerformanceFactory(objectFromFactory.data);
+            setIsLoading(false)
+        }
       
-    //     fetchData()
+        fetchData()
 
-    // }, [userId])
+    }, [userId])
 
-    // if(isLoading) {
-    //     return <p>Chargement en cours...</p>
-    // }
+    if(isLoading) {
+        return <p>Chargement en cours...</p>
+    }
 
-    // if(isError){
-    //     return <p>Une erreur est survenue...</p>
-    // }
+    if(isError){
+        return <p>Une erreur est survenue...</p>
+    }
 
 
     return (
         <div className="graphiqueRadar">
             <ResponsiveContainer width="100%" height="100%" >
-                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
+                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={userPerformanceFactory}>
                     <PolarGrid />
                     <PolarAngleAxis dataKey="kindName" />
                     <PolarRadiusAxis />

@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-.customTooltip {
+.customTooltipBar {
     background-color: $red;
     padding: 10px 5px;
     color: $white;
@@ -33,10 +33,28 @@
             font-size: 15px;
         }
 
-        ul {
+        .legend {
             display: flex;
             justify-content: space-between;
             width: 300px;
+            list-style: none;
+
+            .itemRed::before, .itemBlack::before {
+                content: '';
+                display: inline-block;
+                width: 10px;    // Adjust the size of the circle
+                height: 10px;   // Adjust the size of the circle
+                border-radius: 50%;
+                margin-right: 10px; // Space between the circle and the text
+            }
+
+            .itemBlack::before {
+                background-color: $black; // The color for the 'Poids (kg)' item
+            }
+
+            .itemRed::before {
+                background-color: $red; // The color for the 'Poids (kg)' item
+            }
         }
     }
 

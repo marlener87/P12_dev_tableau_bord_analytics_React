@@ -33,5 +33,18 @@
                 }
             }
         }
+
+
+        .recharts-polar-grid,
+        .recharts-radar{
+                transform: scale(.85);
+                transform-origin: center center;
+        }
+
+        text {
+            *{
+                fill:white;
+            }
+        }
     }
 }

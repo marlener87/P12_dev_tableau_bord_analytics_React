@@ -2,7 +2,7 @@ import UserFactory from '../factories/userFactory';
 import UserActivityFactory from '../factories/userActivityFactory';
 import UserSessionFactory from '../factories/userSessionFactory';
 import UserScoreFactory from '../factories/userScoreFactory';
-//import UserPerformanceFactory from '../factories/userPerformanceFactory';
+import UserPerformanceFactory from '../factories/userPerformanceFactory';
 
 
 // Objectifs du service : 
@@ -52,11 +52,17 @@ const UserService = {
     /**
      * Récupère les données de la session de l'utilisateur sur le serveur et les formate avec la factory associée
      */
-    // async getPerformance(userId) {
-    //     return await fetch(`http://localhost:3000/user/${userId}/performance`) // Récupère l'objet response
-    //     .then(response => response.json())
-    //     .then(resultsFromApi => new UserPerformanceFactory(resultsFromApi))
-    // },
+    async getPerformance(userId) {
+        return await fetch(`http://localhost:3000/user/${userId}/performance`) // Récupère l'objet response
+        .then(response => response.json())
+        //.then(resultsFromApi => new UserPerformanceFactory(resultsFromApi))
+        .then(resultsFromApi => {
+            const userPerformanceFactory = new UserPerformanceFactory(resultsFromApi);
+            console.log(userPerformanceFactory);
+            return userPerformanceFactory;
+            
+        })
+    },
 
     /**
      * Récupère les données du score de l'utilisateur sur le serveur et les formate avec la factory associée

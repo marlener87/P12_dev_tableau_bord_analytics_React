@@ -9,6 +9,7 @@
         position: absolute;
         margin-top: 24px;
         margin-left: 30px;
+
         h2 {
             font-size: 15px;
         }
@@ -21,19 +22,30 @@
         width: 159px;
         height: 159px;
         border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color:#74798C;
-        font-size: 16px;
         top: 50px;
         left: 50px;
 
-        .nombreScore {
-            color: #282D30;
-            font-size: 26px;
+        .textContainer {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color:#74798C;
+            font-size: 16px;
+            width: 100px;
+            top: 50px;
+            left: 25px;
+
+            .nombreScore {
+                color: #282D30;
+                font-size: 26px;
+                font-weight: 700;
+            }     
         }
+
+        
     }
 
     .recharts-wrapper {

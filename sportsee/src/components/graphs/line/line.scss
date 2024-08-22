@@ -1,5 +1,18 @@
 @import '../../../styles/variables.scss';
 
+.customTooltip {
+    color: $black;
+
+    .label {
+        font-size: 8px;
+    }
+}
+
+.customCursor {
+    width: 258px;
+    height: 263px;
+}
+
 .graphiqueLigne {
     width: 258px;
     height: 263px;
@@ -8,28 +21,31 @@
     margin-right: 30px;
 
     .titleApp {
+        position: absolute;
         margin: 30px 35px 0 35px;
+        z-index:100;
+
         h2 {
             font-size: 15px;
-            color: white;
-            font-family: $font3;     
+            color: $white;
             font-weight: 100;
-        }
-        
+        } 
     }
 
+    .xAxis{
+        transform-origin: center center;
+        transform: scale(.9) translateY(3px);
+        opacity: .5;
+    }
     .recharts-responsive-container {
-        max-height: 200px;
+        //max-height: 200px;
+
         .recharts-wrapper {
             max-height: 200px;
 
             .recharts-surface {
                 .recharts-cartesian-grid {
                     display: none;
-                }
-                .recharts-cartesian-axis {
-                    display: none;
-                    
                 }
             }
         }

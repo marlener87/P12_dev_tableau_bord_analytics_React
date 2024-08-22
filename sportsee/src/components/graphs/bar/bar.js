@@ -3,10 +3,11 @@ import './bar.scss';
 import UserService from '../../../services/userService';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
+// fenêtre rouge au survol, valeur
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="customTooltip">
+            <div className="customTooltipBar">
                 <p className='textTooltip'>{`${payload[0].value}kg`}</p>
                 <p>{`${payload[1].value}kCal`}</p>
             </div>
@@ -45,9 +46,9 @@ const App = ({ userId }) => {
         <div className="app">
             <div className="titleApp">
                 <h2>Activité quotidienne</h2>
-                <ul>
-                    <li>Poids (kg)</li>
-                    <li>Calories brûlées (kCal)</li>
+                <ul className="legend">
+                    <li className="itemBlack">Poids (kg)</li>
+                    <li className="itemRed">Calories brûlées (kCal)</li>
                 </ul>
             </div>
             
@@ -56,7 +57,7 @@ const App = ({ userId }) => {
                 height={250}
                 data={userActivityFactory.sessions}
                 margin={{
-                    top: 5, right: 30, left: 20, bottom: 5,
+                    top: 5, right: 0, left: 20, bottom: 5,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
