@@ -1,3 +1,14 @@
+.customTooltipBar {
+  background-color: #e60000;
+  padding: 10px 5px;
+  color: white;
+  font-size: 8px;
+  text-align: center;
+}
+.customTooltipBar .textTooltip {
+  margin-bottom: 20px;
+}
+
 .app {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,7 +39,7 @@
 .app .titleApp h2 {
   font-size: 15px;
 }
-.app .titleApp ul {
+.app .titleApp .legend {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,6 +47,21 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 300px;
+  list-style: none;
+}
+.app .titleApp .legend .itemRed::before, .app .titleApp .legend .itemBlack::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.app .titleApp .legend .itemBlack::before {
+  background-color: black;
+}
+.app .titleApp .legend .itemRed::before {
+  background-color: #e60000;
 }
 .app .recharts-wrapper {
   display: -webkit-box;
@@ -59,18 +85,6 @@
 }
 .app .recharts-wrapper .recharts-layer .recharts-bar-rectangles .recharts-bar-rectangle .recharts-rectangle {
   width: 7px;
-}
-.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip {
-  background-color: #e60000 !important;
-}
-.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-label {
-  display: none;
-}
-.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-item-list {
-  background-color: #e60000;
-}
-.app .recharts-wrapper .recharts-tooltip-wrapper-right .recharts-default-tooltip .recharts-tooltip-item-list li {
-  color: white !important;
 }
 .app .recharts-legend-wrapper .recharts-default-legend {
   display: none;

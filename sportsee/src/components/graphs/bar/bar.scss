@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #FBFBFB;
+    background: $cream;
     width: 835px;
     height: 320px;
     margin-bottom: 30px;
@@ -65,18 +65,18 @@
         .recharts-surface {
             .recharts-cartesian-grid {
                 .recharts-cartesian-grid-vertical line {
-                    stroke: #FBFBFB;
+                    stroke: $cream;
                 }
             }
 
             .recharts-yAxis {
                 .recharts-cartesian-axis-line {
-                    stroke: #FBFBFB;
+                    stroke: $cream;
                 }
                 .recharts-cartesian-axis-ticks {
                     .recharts-cartesian-axis-tick {
                         .recharts-cartesian-axis-tick-line {
-                            stroke: #FBFBFB;
+                            stroke: $cream;
                         }
                     }          
                 }
@@ -86,7 +86,7 @@
                 .recharts-cartesian-axis-ticks {
                     .recharts-cartesian-axis-tick {
                         .recharts-cartesian-axis-tick-line {
-                            stroke: #FBFBFB;
+                            stroke: $cream;
                         }
                     }
                 }

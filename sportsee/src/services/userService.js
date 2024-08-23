@@ -11,9 +11,11 @@ import UserPerformanceFactory from '../factories/userPerformanceFactory';
 // - Les restituer à l'application (return)
 
 const UserService = {
- 
     /**
-     * Récupère les données de l'utilisateur sur le serveur et les formate avec la factory associée
+     * Récupère les données de l'utilisateur sur le serveur et les formate avec la factory associée.
+     * 
+     * @param {number} userId - L'identifiant unique de l'utilisateur dont les données doivent être récupérées.
+     * @returns {Promise<UserFactory>} - Une promesse qui résout une instance de `UserFactory` contenant les données utilisateur formatées.
      */
     async getUser(userId) {
      const newObjectToUse =  await fetch(`http://localhost:3000/user/${userId}`) // Récupère l'objet response
@@ -33,6 +35,8 @@ const UserService = {
 
     /**
      * Récupère les données d'activité de l'utilisateur sur le serveur et les formate avec la factory associée
+     * @param {number} userId - L'identifiant unique de l'utilisateur dont les données d'activité doivent être récupérées.
+     * @returns {Promise<UserActivityFactory>} - Une promesse qui résout une instance de `UserActivityFactory` contenant les données d'activité formatées.
      */
     async getActivity(userId) {
         return await fetch(`http://localhost:3000/user/${userId}/activity`) // Récupère l'objet response
@@ -42,6 +46,8 @@ const UserService = {
 
     /**
      * Récupère les données de la session de l'utilisateur sur le serveur et les formate avec la factory associée
+     * @param {number} userId - L'identifiant unique de l'utilisateur dont les données de session doivent être récupérées.
+     * @returns {Promise<UserSessionFactory>} - Une promesse qui résout une instance de `UserSessionFactory` contenant les données de session formatées.
      */
     async getSession(userId) {
         return await fetch(`http://localhost:3000/user/${userId}/average-sessions`) // Récupère l'objet response
@@ -51,6 +57,8 @@ const UserService = {
 
     /**
      * Récupère les données de la session de l'utilisateur sur le serveur et les formate avec la factory associée
+     * @param {number} userId - L'identifiant unique de l'utilisateur dont les données de performance doivent être récupérées.
+     * @returns {Promise<UserPerformanceFactory>} - Une promesse qui résout une instance de `UserPerformanceFactory` contenant les données de performance formatées.
      */
     async getPerformance(userId) {
         return await fetch(`http://localhost:3000/user/${userId}/performance`) // Récupère l'objet response
@@ -66,7 +74,10 @@ const UserService = {
 
     /**
      * Récupère les données du score de l'utilisateur sur le serveur et les formate avec la factory associée
+     * @param {number} userId - L'identifiant unique de l'utilisateur dont les données de score doivent être récupérées.
+     * @returns {Promise<UserScoreFactory>} - Une promesse qui résout une instance de `UserScoreFactory` contenant les données de score formatées.
      */
+
     async getScore(userId) {
         return await fetch(`http://localhost:3000/user/${userId}`)
         .then(response => response.json())

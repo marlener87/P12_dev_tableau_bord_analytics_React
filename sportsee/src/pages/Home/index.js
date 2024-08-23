@@ -6,14 +6,19 @@ import Apport from '../../components/Apport/Apport';
 
 import App from '../../components/graphs/bar/bar'
 import './style.scss';
-//import GraphicLine from '../../components/graphs/line/line';
 import LineGraph from '../../components/graphs/line/line';
 import RadarGraph from '../../components/graphs/radar/radar'
 import Radial from '../../components/graphs/radial/radial';
 
+/**
+ * Composant `Home` représentant la page d'accueil de l'application.
+ * 
+ * @component
+ * @returns {JSX.Element} - Le rendu du composant `Home`.
+ */
 const Home = () => { 
-
-    const userId = 18; 
+    // Identifiant de l'utilisateur utilisé pour récupérer les données
+    const userId = 12; 
 
     return (
         <main>
@@ -47,5 +52,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//<GraphicLine />

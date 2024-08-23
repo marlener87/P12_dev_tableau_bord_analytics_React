@@ -25,8 +25,7 @@ const CustomCursor = (props) => {
     
     return (
         <Rectangle className='customCursor'
-            fill="#e60000"
-            stroke="#e60000"
+            fill="transparent"
             x={x}
             y={y}
             width={width * 100}
@@ -62,15 +61,21 @@ const LineGraph = ({ userId }) => {
             const hoveredX = hoveredData.activePayload[0].payload.day;
             const index = userSessionFactory.sessions.findIndex(d => d.day === hoveredX);
             const percentage = ((userSessionFactory.sessions.length - index - 1) * 100) / (userSessionFactory.sessions.length - 1);
-    
-            setPerc(100 - percentage);
-        }
+            //setPerc(100 - percentage);
+        } 
+
     };
   
     const onMouseOut = () => {
+        const div = document.querySelector('.graphiqueLigne .background')                    
+        div.style.width = `0`;
         setPerc(0);
     };
 
+    const updateBackground = (event) => {
+
+        console.log(event.offsetX)
+    }
     
     useEffect(() => {
         const fetchData = async () => {
@@ -85,6 +90,25 @@ const LineGraph = ({ userId }) => {
 
     }, [userId])
 
+
+    useEffect(() => {
+    
+        if(isLoading) return;
+
+        // Note: Utilsier des reférences 
+        const div = document.getElementById("graphiqueLigne")
+        const background = document.querySelector('.graphiqueLigne .background') 
+        div.addEventListener("mousemove", function(event) {
+            const divWidth = this.offsetWidth;
+            const mouseX = event.offsetX;
+            const percentageX = (mouseX / divWidth) * 100;
+            console.log(100 - percentageX)
+
+            background.style.width = `${100 - percentageX}%`;
+        });
+
+    }, [isLoading])
+
     if(isLoading) {
         return <p>Chargement en cours...</p>
     }
@@ -94,18 +118,23 @@ const LineGraph = ({ userId }) => {
     }
   
     return (
-        <div className="graphiqueLigne">
+        <div id="graphiqueLigne"  className="graphiqueLigne">
+
+            <div className="background"></div>
+
             <div className="titleApp">
                 <h2>Durée moyenne des sessions</h2>
             </div>
+
+
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                     data={userSessionFactory.sessions}
                     margin={{
-                    top: 0,
+                    top: 85,
                     right: 0,
                     left: -60,
-                    bottom: 0,
+                    bottom: 30,
                     }}
                     onMouseMove={onMouseMove}
                     onMouseOut={onMouseOut}
@@ -127,19 +156,21 @@ const LineGraph = ({ userId }) => {
                         tickLine={false}  // Hide the tick lines 
                         tickFormatter={(day) => dayNames[day - 1]} // Map the numbers to day names
                     />
-                    <YAxis />
+                    <YAxis hide />
                     <Tooltip 
                         content={<CustomTooltip />} 
                         cursor={<CustomCursor />} />
                     <Area 
                         type="natural" 
                         dataKey="sessionLength" 
-                       stroke="url(#colorUv)"
+                        stroke="url(#colorUv)"
                         fill="#FF0000" 
                         strokeWidth={2} 
                         activeDot={<CustomizedDot />} />
                 </AreaChart>
             </ResponsiveContainer>
+
+
         </div>
     );
 };

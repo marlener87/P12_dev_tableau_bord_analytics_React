@@ -1,45 +1,11 @@
-// import React from 'react';
-
-
-// const apiBar = () => {
-
-//     fetch(`http://localhost:3000/user/12/activity`)
-//       .then(response => response.json())
-//       .then(responseData => {
-//         setData(responseData.data.sessions);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-
-
-//       fetch(`http://localhost:3000/user/12/activity`)
-//       .then(response => response.json())
-//       .then(responseData => {
-//         setData(responseData.data.sessions);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-
-
-
-//       fetch(`http://localhost:3000/user/12/activity`)
-//       .then(response => response.json())
-//       .then(responseData => {
-//         setData(responseData.data.sessions);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-
-// };
-
-// export default apiBar;
-
-// api.js
-
 // API pour la partie Apport.js, radial.js
+/**
+ * Récupère les données utilisateur à partir de l'API.
+ * 
+ * @param {number} userId - L'identifiant unique de l'utilisateur dont les données doivent être récupérées.
+ * @returns {Promise<Object>} - Une promesse qui résout les données utilisateur.
+ * @throws {Error} - Lance une erreur si la récupération des données échoue.
+ */
 export const fetchUserData = async (userId) => {
   try {
       const response = await fetch(`http://localhost:3000/user/${userId}`);
@@ -55,6 +21,13 @@ export const fetchUserData = async (userId) => {
 };
 
 // API pour la partie bar.js
+/**
+ * Récupère les données d'activité utilisateur à partir de l'API.
+ * 
+ * @param {number} userId - L'identifiant unique de l'utilisateur dont les données d'activité doivent être récupérées.
+ * @returns {Promise<Array<Object>>} - Une promesse qui résout un tableau des sessions d'activité utilisateur.
+ * @throws {Error} - Lance une erreur si la récupération des données d'activité échoue.
+ */
 export const fetchUserActivity = async (userId) => {
   try {
     console.log(userId)
@@ -72,6 +45,13 @@ export const fetchUserActivity = async (userId) => {
 
 
 // API pour la partie line.js
+/**
+ * Récupère les données de sessions moyennes utilisateur à partir de l'API.
+ * 
+ * @param {number} userId - L'identifiant unique de l'utilisateur dont les données de sessions moyennes doivent être récupérées.
+ * @returns {Promise<Array<Object>>} - Une promesse qui résout un tableau des sessions moyennes utilisateur.
+ * @throws {Error} - Lance une erreur si la récupération des données de sessions moyennes échoue.
+ */
 export const fetchUserSession = async (userId) => {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
@@ -89,6 +69,13 @@ export const fetchUserSession = async (userId) => {
 };
 
 // API pour la partie radar.js
+/**
+ * Récupère les données de performance utilisateur à partir de l'API.
+ * 
+ * @param {number} userId - L'identifiant unique de l'utilisateur dont les données de performance doivent être récupérées.
+ * @returns {Promise<Array<Object>>} - Une promesse qui résout un tableau des performances utilisateur.
+ * @throws {Error} - Lance une erreur si la récupération des données de performance échoue.
+ */
 export const fetchUserRadar = async (userId) => {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
