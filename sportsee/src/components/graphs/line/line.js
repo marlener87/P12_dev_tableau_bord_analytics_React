@@ -8,9 +8,9 @@ const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         // Assurez-vous que la valeur existe et qu'elle est la bonne
         return (
-        <div className="customTooltip" style={{ backgroundColor: '#fff', padding: '5px', border: '1px solid #ccc' }}>
-            <p className="label">{`${payload[0].value} min`}</p>
-        </div>
+            <div className="customTooltip" style={{ backgroundColor: '#fff', padding: '5px', border: '1px solid #ccc' }}>
+                <p className="label">{`${payload[0].value} min`}</p>
+            </div>
         );
     }
 
@@ -63,7 +63,6 @@ const LineGraph = ({ userId }) => {
             const percentage = ((userSessionFactory.sessions.length - index - 1) * 100) / (userSessionFactory.sessions.length - 1);
             //setPerc(100 - percentage);
         } 
-
     };
   
     const onMouseOut = () => {
@@ -72,10 +71,9 @@ const LineGraph = ({ userId }) => {
         setPerc(0);
     };
 
-    const updateBackground = (event) => {
-
-        console.log(event.offsetX)
-    }
+    // const updateBackground = (event) => {
+    //     console.log(event.offsetX)
+    // }
     
     useEffect(() => {
         const fetchData = async () => {
@@ -90,9 +88,7 @@ const LineGraph = ({ userId }) => {
 
     }, [userId])
 
-
     useEffect(() => {
-    
         if(isLoading) return;
 
         // Note: Utilsier des reférences 
@@ -102,7 +98,7 @@ const LineGraph = ({ userId }) => {
             const divWidth = this.offsetWidth;
             const mouseX = event.offsetX;
             const percentageX = (mouseX / divWidth) * 100;
-            console.log(100 - percentageX)
+            //console.log(100 - percentageX)
 
             background.style.width = `${100 - percentageX}%`;
         });
@@ -119,13 +115,11 @@ const LineGraph = ({ userId }) => {
   
     return (
         <div id="graphiqueLigne"  className="graphiqueLigne">
-
             <div className="background"></div>
 
             <div className="titleApp">
                 <h2>Durée moyenne des sessions</h2>
             </div>
-
 
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
@@ -134,17 +128,17 @@ const LineGraph = ({ userId }) => {
                     top: 85,
                     right: 0,
                     left: -60,
-                    bottom: 30,
+                    bottom: 20,
                     }}
                     onMouseMove={onMouseMove}
                     onMouseOut={onMouseOut}
                 >
                     <defs>
                         <linearGradient id="colorUv" x1="0%" y1="0" x2="100%" y2="0">
-                        <stop offset="0%" stopColor="rgba(255,255,255,.3)" />
-                        <stop offset={`${perc}%`} stopColor="rgba(255,255,255,.3)" />
-                        <stop offset={`${perc}%`} stopColor="white" />
-                        <stop offset={`${100}%`} stopColor="white" />
+                            <stop offset="0%" stopColor="rgba(255,255,255,.3)" />
+                            <stop offset={`${perc}%`} stopColor="rgba(255,255,255,.3)" />
+                            <stop offset={`${perc}%`} stopColor="white" />
+                            <stop offset={`${100}%`} stopColor="white" />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -169,11 +163,12 @@ const LineGraph = ({ userId }) => {
                         activeDot={<CustomizedDot />} />
                 </AreaChart>
             </ResponsiveContainer>
-
-
         </div>
     );
 };
+
+
+
   
 export default LineGraph;
 

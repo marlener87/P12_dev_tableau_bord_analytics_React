@@ -3,46 +3,46 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import './radar.scss';
 import UserService from '../../../services/userService';
 
+/**
+ * Composant `RadarGraph` qui affiche un graphique radar représentant les performances de l'utilisateur.
+ *
+ * @param {Object} props - Les propriétés passées au composant.
+ * @param {number} props.userId - L'ID de l'utilisateur pour lequel récupérer les données de performance.
+ * @returns {JSX.Element} Le composant React.
+ */
 const RadarGraph = ({ userId }) => {
     const [userPerformanceFactory, setUserPerformanceFactory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
-    // useEffect(() => {
-    //   fetch(`http://localhost:3000/user/12/performance`)
-    //   .then(response => response.json())
-    //   .then(responseData => {
-    //      // Transforme les datas pour inclure les noms des kind
-    //      const transformedData = responseData.data.data.map(item => ({
-    //         ...item,
-    //         kindName: responseData.data.kind[item.kind]
-    //     })).reverse();
-    //     //setData(responseData.data.data);
-    //     setData(transformedData);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // }, [])
-
+    /**
+     * Hook `useEffect` pour récupérer les données de performance de l'utilisateur
+     * dès que le composant est monté ou que l'ID de l'utilisateur change.
+     */
     useEffect(() => {
+        /**
+         * Fonction asynchrone pour récupérer les données de performance depuis le service utilisateur.
+         */
         const fetchData = async () => {
             const objectFromFactory = await UserService.getPerformance(userId)
             //console.log(objectFromFactory)
             //console.log(objectFromFactory.kind);
             
+            // Mise à jour de l'état avec les données récupérées
             setUserPerformanceFactory(objectFromFactory.data);
             setIsLoading(false)
         }
       
         fetchData()
 
-    }, [userId])
+    }, [userId]); // Dépendance sur l'userId, le hook se ré-exécutera si l'userId change
 
+    // Affiche un message de chargement si les données sont en cours de récupération
     if(isLoading) {
         return <p>Chargement en cours...</p>
     }
 
+    // Affiche un message d'erreur en cas de problème lors de la récupération des données
     if(isError){
         return <p>Une erreur est survenue...</p>
     }

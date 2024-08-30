@@ -32,7 +32,6 @@ const UserService = {
         return newObjectToUse
     },
 
-
     /**
      * Récupère les données d'activité de l'utilisateur sur le serveur et les formate avec la factory associée
      * @param {number} userId - L'identifiant unique de l'utilisateur dont les données d'activité doivent être récupérées.
@@ -82,31 +81,7 @@ const UserService = {
         return await fetch(`http://localhost:3000/user/${userId}`)
         .then(response => response.json())
         .then(resultsFromApi => new UserScoreFactory(resultsFromApi))
-        // .then(resultsFromApi => {
-        //     const userScoreFactory = new UserScoreFactory(resultsFromApi);
-        //     // Log de la valeur finale
-        //     //console.log(userScoreFactory.score);
-        //     return userScoreFactory;
-        // });
     }
-
-    // async getScore(userId) {
-    //     return await fetch(`http://localhost:3000/user/${userId}`) // Récupère l'objet response
-    //     .then(response => response.json())
-    //     .then(resultsFromApi => {
-    //         const userScoreFactory = new UserScoreFactory(resultsFromApi);
-            
-    //         // Formater les données pour le graphique
-    //         const formattedData = [
-    //             { name: 'Score', value: userScoreFactory.score * 100, fill: '#FF0000' }
-    //         ];
-            
-    //         return {
-    //             formattedData,
-    //             percentage: userScoreFactory.score
-    //         };
-    //     });
-    // },
 }
 
 export default UserService;
