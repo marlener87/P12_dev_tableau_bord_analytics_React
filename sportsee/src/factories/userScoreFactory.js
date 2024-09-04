@@ -13,7 +13,8 @@ class UserScoreFactory {
         console.log(dataFromApi);
         
         // Format à utiliser dans l'application = format qui vient de l'API
-        this.score = dataFromApi.data.score;
+        // Unifie score et todayScore, utilise celui qui est disponible
+        this.score = dataFromApi.data.score || dataFromApi.data.todayScore || 0;
         //console.log(this.score);
     }
 }

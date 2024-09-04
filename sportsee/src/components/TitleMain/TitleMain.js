@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './titleMain.scss';
+import UserService from '../../services/userService';
 
 /**
  * Composant `TitleMain` qui affiche un message de bienvenue personnalisé pour l'utilisateur.
@@ -19,14 +20,29 @@ const TitleMain = ({userId}) => {
      * Effet secondaire pour récupérer les données de l'utilisateur lorsque `userId` change.
      * Utilise `fetch` pour obtenir les données utilisateur depuis une API et met à jour l'état `name` avec le prénom de l'utilisateur.
      */
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/user/${userId}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //        setName(data.data.userInfos.firstName)
+    //        //console.log(name);
+    //     })
+    //     .catch(error => console.error('Error fetching user data:', error));
+    // }, [userId]);
+
+    /**
+     * Effet secondaire pour récupérer les données de l'utilisateur lorsque `userId` change.
+     * Utilise `UserService` pour obtenir les données utilisateur et met à jour l'état `name` avec le prénom de l'utilisateur.
+     */
     useEffect(() => {
-        fetch(`http://localhost:3000/user/${userId}`)
-        .then(response => response.json())
-        .then(data => {
-           setName(data.data.userInfos.firstName)
-           //console.log(name);
-        })
-        .catch(error => console.error('Error fetching user data:', error));
+        // Appelle UserService pour récupérer les données de l'utilisateur
+        UserService.getUser(userId)
+            .then(user => {
+                setName(user.userInfos.firstName);  // Met à jour l'état avec le prénom récupéré
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
     }, [userId]);
 
     /**
